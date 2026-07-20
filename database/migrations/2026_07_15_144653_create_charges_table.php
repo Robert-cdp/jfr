@@ -24,7 +24,15 @@ return new class extends Migration
 
             $table->string('description');
 
-            $table->decimal('amount', 10, 2);
+            $table->decimal('amount_paid', 10, 2)->default(0);
+
+            $table->decimal('balance', 10, 2);
+
+            $table->enum('status', [
+                'pending',
+                'partial',
+                'paid',
+            ])->default('pending');
 
             $table->date('due_date')->nullable();
 
